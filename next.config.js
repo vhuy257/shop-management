@@ -5,6 +5,9 @@ const nextConfig = nextTranslate({
     webpack: (config, { isServer, webpack }) => {
         return config;
     },    
+    experimental: {
+        appDir: true
+    },
     env: {
         NEXTAUTH_URL: "http://localhost:4000",
         NEXTAUTH_SECRET: "kkowHC0+WwAEvsQr7NKRBwdKvAKMUIMjmWPDYWjOe4w="

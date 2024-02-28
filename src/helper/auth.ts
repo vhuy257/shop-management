@@ -47,9 +47,12 @@ export const authOptions: NextAuthOptions = {
     secret: process.env.NEXTAUTH_SECRET,
     pages: {
         signIn: "/login",
-        error: "/",
+        error: "/login",
     },   
     callbacks: {
+        redirect({ url, baseUrl }) {
+            return baseUrl
+        },
         jwt({ token, user }) {
             if (user) {
                 const u = user as unknown as any;

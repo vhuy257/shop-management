@@ -62,7 +62,7 @@ const CreateArticle = () => {
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-                <Button variant="outline" size={'sm'} className='gap-2'>
+                <Button variant="outline" size={'xs'} className='gap-2'>
                     <PlusIcon/> Create Article
                 </Button>
             </DialogTrigger>

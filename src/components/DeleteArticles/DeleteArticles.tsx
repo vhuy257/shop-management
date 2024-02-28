@@ -10,7 +10,7 @@ export default function DeleteArticles<TData> ({
     table,
 }: DataTablePaginationProps<TData>) {
     return (
-        <Button variant={'destructive'} size={'sm'}>
+        <Button variant={'destructive'} size={'xs'}>
             Remove ({table.getFilteredSelectedRowModel().rows.length})
         </Button>
     )

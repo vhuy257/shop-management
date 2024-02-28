@@ -38,7 +38,7 @@ const ListArticles = () => {
     }
 
     if (isFetching || isPending || mutation.isPending) return (
-        <div className='w-[1060px] my-10'>
+        <div className='my-10'>
             <Skeleton className="min-h-[380px]" />
         </div>
     )    
@@ -46,7 +46,7 @@ const ListArticles = () => {
     if (isError) return 'An error has occurred: ' + error.message
 
     return (
-        <div className="w-[1060px] my-10">            
+        <div className="my-10">            
             <DataTable columns={columns} data={data} searchKey='title' meta={{removeRow}}/>
         </div>
     )
