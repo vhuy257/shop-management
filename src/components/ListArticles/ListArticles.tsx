@@ -41,9 +41,7 @@ const ListArticles = ({ translate } : {
     }
 
     if (isFetching || isPending || mutation.isPending) return (
-        <div className='my-10'>
-            <Skeleton className="min-h-[380px]" />
-        </div>
+        <Skeleton className="w-full min-h-[380px] my-10" />
     )    
     
     if (isError) return 'An error has occurred: ' + error.message

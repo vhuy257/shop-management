@@ -1,24 +1,28 @@
 import React from 'react'
-
 import {    
     DropdownMenuGroup,
-    DropdownMenuItem,
+    DropdownMenuCheckboxItem
 } from "@/components/ui/dropdown-menu"
 import Link from 'next/link'
+import { useLocale } from 'next-intl'
+import { useRouter } from 'next/navigation'
 
 const LanguageSwitcher = () => {
+    const locale = useLocale()
+    const router = useRouter()
+
     return (
         <DropdownMenuGroup>
-            <DropdownMenuItem asChild>
-                <Link href="/?lang=vi" as="/vi" prefetch> 
+            <DropdownMenuCheckboxItem checked={locale === 'vi'} onCheckedChange={() => router.push('/vi')}>
+                <Link href="/?lang=vi" as="/vi" className='block'> 
                     Vietnamese 
                 </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild>
-                <Link href="/?lang=en" as="/en" prefetch>
+            </DropdownMenuCheckboxItem>
+            <DropdownMenuCheckboxItem checked={locale === 'en'} onCheckedChange={() => router.push('/en')}>
+                <Link href="/?lang=en" as="/en" className='block'>
                     English 
                 </Link>
-            </DropdownMenuItem>                        
+            </DropdownMenuCheckboxItem>                        
         </DropdownMenuGroup>
     )
 }
