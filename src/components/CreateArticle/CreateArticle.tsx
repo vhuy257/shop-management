@@ -52,6 +52,8 @@ const CreateArticle = ({ title }: any) => {
         }
 
         if(createArticle.isError) {
+            console.log(createArticle, 'createArticle.error')
+
             toast({
                 description: createArticle.error.message,
                 variant: 'destructive'
@@ -63,7 +65,7 @@ const CreateArticle = ({ title }: any) => {
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
                 <Button variant="outline" size={'xs'} className='gap-2'>
-                    <PlusIcon/> Create Article {title}
+                    <PlusIcon/> Create Article 
                 </Button>
             </DialogTrigger>
             <DialogContent>

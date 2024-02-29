@@ -16,10 +16,20 @@ export default function useArticle() {
     const createArticle = useMutation({
         mutationKey: ['createArticle'],
         mutationFn: async ({ url, user }: { url: string, user: User }) => {
-            const res = await kyAuth.post(url, {
-                json: user
-            }).json();
-            return res;
+            try {
+                const res = await kyAuth.post(url, {
+                    json: user
+                }).json();
+                return res;   
+            } catch (error: any) {
+                if (error.name === 'HTTPError') {
+                    const errorJson = await error.response.json();
+                    throw new Error(JSON.stringify(errorJson.message))
+                }
+            }            
+        },
+        onError: (err: any) => {
+            console.log(err, 'error')
         },
         onSuccess: (result, variables, context: any) => {
             queryClient.invalidateQueries(

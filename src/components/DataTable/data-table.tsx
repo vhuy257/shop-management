@@ -40,7 +40,6 @@ export function DataTable<TData, TValue>({
   return (
     <div className="w-full">
       <div className="flex justify-center gap-4 mb-5">
-          {title}
           <CreateArticle />        
           <DeleteArticles table={table}/>    
       </div>

@@ -9,8 +9,17 @@ interface DataTablePaginationProps<TData> {
 export default function DeleteArticles<TData> ({
     table,
 }: DataTablePaginationProps<TData>) {
+
+    const removeList = () => {
+        const listSelect: any = table.getFilteredSelectedRowModel().rows
+        const meta: any = table?.options?.meta;
+        listSelect.map((k: any) => {
+            meta.removeRow(k?.id)
+        })
+    }
+
     return (
-        <Button variant={'destructive'} size={'xs'}>
+        <Button variant={'destructive'} size={'xs'} onClick={() => removeList()}>
             Remove ({table.getFilteredSelectedRowModel().rows.length})
         </Button>
     )

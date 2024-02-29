@@ -12,6 +12,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
+import { useLocale } from "next-intl";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -52,6 +53,8 @@ const components: { title: string; href: string; description: string }[] = [
 ];
 
 const Navigation = () => {
+  const locale = useLocale()
+
   return (
     <NavigationMenu>
       <NavigationMenuList>
@@ -104,9 +107,9 @@ const Navigation = () => {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
+          <Link href={`/${locale}/menu-list`} legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Documentation
+              Menu List
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

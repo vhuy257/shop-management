@@ -47,7 +47,7 @@ const ListArticles = ({ translate } : {
     if (isError) return 'An error has occurred: ' + error.message
 
     return (
-        <div className="my-10">      
+        <div className="my-10 w-full">      
             <DataTable columns={columns} data={data} searchKey='title' meta={{removeRow}} {...translate}/>
         </div>
     )

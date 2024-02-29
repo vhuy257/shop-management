@@ -24,13 +24,14 @@ const LoginForm = () => {
 
     const onSubmit = async (data: any) => {
         setLoading(true)
+        
+        console.log(callbackUrl, 'result')
 
         const result = await signIn("loginCustom", {
             ...data,
             callbackUrl: callbackUrl
         })
-        
-        console.log(result, 'result')
+                
         setLoading(false)
         
         if(result?.error) {
