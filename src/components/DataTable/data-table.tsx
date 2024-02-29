@@ -17,12 +17,14 @@ import { DataTableToolbar } from "./data-table-toolbar";
 import useDataTable from "@/hooks/useDataTable";
 import CreateArticle from "../CreateArticle/CreateArticle";
 import DeleteArticles from "../DeleteArticles/DeleteArticles";
+import { useTranslations } from "next-intl";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   meta?: {};
   searchKey?: string
+  translate?: any
 }
 
 export function DataTable<TData, TValue>({
@@ -30,12 +32,15 @@ export function DataTable<TData, TValue>({
   data,
   meta,
   searchKey,
+  ...translate
 }: DataTableProps<TData, TValue>) {
   const { table } = useDataTable({columns, data, meta});
+  const { title }: any = translate;
 
   return (
     <div className="w-full">
       <div className="flex justify-center gap-4 mb-5">
+          {title}
           <CreateArticle />        
           <DeleteArticles table={table}/>    
       </div>

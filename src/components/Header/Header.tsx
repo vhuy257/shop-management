@@ -1,14 +1,18 @@
-"use client"
 import React from 'react'
 import Image from 'next/image'
 import UserDropdown from '../UserDropdown/UserDropdown'
 import Navigation from '../Navigation/Navigation'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/helper/auth'
-import Test from '../Test/Test'
+import { getTranslations } from 'next-intl/server'
 
-export default function Header() {
-  //const session = await getServerSession(authOptions)
+const Header = async () => {
+  const session = await getServerSession(authOptions)
+  const t = await getTranslations("Index")
+
+  const translate = {
+    title: t("title")
+  }
 
   return (
     <div className="z-10 max-w-5xl w-full items-center justify-between text-sm lg:flex mx-auto pt-10">        
@@ -24,9 +28,10 @@ export default function Header() {
         </div>
         <Navigation />
         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          {/* {session && <UserDropdown  session={session} />} */}
-          <UserDropdown />
+          {session && <UserDropdown  session={session} {...translate} />}
         </div>
     </div>
   )
 }
+
+export default Header;

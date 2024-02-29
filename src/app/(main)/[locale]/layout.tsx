@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Be_Vietnam_Pro } from "next/font/google";
-import { NextAuthProvider } from "../../providers/auth";
-import { QueryProvider } from "../../providers/query";
+import { NextAuthProvider } from "../../../providers/auth";
+import { QueryProvider } from "../../../providers/query";
 import Layout from "@/components/Layout/Layout";
+import I18nProvider from "@/providers/intl";
+
 import "@/app/globals.css";
-import Header from "@/components/Header/Header";
 
 const be = Be_Vietnam_Pro({
   subsets: ['vietnamese', 'latin'],
@@ -18,18 +19,23 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  params: {
+    locale
+  }
 }: {
   children: React.ReactNode;
+  params: {locale: string}
 }) {
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body className={be.className}>
         <NextAuthProvider>
-          <QueryProvider>
-            <Layout>
-              <Header />
-              {children}
-            </Layout>
+          <QueryProvider>     
+            <I18nProvider locale={locale}>
+              <Layout>
+                {children}
+              </Layout>         
+            </I18nProvider>
           </QueryProvider>
         </NextAuthProvider>
       </body>

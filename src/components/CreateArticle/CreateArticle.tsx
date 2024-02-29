@@ -1,4 +1,4 @@
-'use client';
+'use client'
 import React, { useEffect, useState } from 'react'
 import {
     Dialog,
@@ -25,11 +25,11 @@ import useArticle from '@/hooks/useArticle';
 import { useToast } from '../ui/use-toast';
 import { PlusIcon } from "@radix-ui/react-icons"
 
-const CreateArticle = () => {
+const CreateArticle = ({ title }: any) => {
     const { createArticle } = useArticle()
     const [ open, setOpen ] = useState(false)
     const { toast } = useToast()
-
+    
     const form = useForm({
         defaultValues: {
             name: null,
@@ -63,7 +63,7 @@ const CreateArticle = () => {
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
                 <Button variant="outline" size={'xs'} className='gap-2'>
-                    <PlusIcon/> Create Article
+                    <PlusIcon/> Create Article {title}
                 </Button>
             </DialogTrigger>
             <DialogContent>

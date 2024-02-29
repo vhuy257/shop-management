@@ -1,13 +1,15 @@
-'use client'
+'use client';
 import React from 'react'
-import { useMutation, useQuery } from '@tanstack/react-query'
-import { API_URL } from '@/constant/constant'
-import { kyCustom, queryClient } from '@/helper/auth'
 import { Skeleton } from '../ui/skeleton'
 import DataTable from '../DataTable/data-table'
 import { columns } from '../Columns/Columns'
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { API_URL } from '@/constant/constant';
+import { kyCustom, queryClient } from '@/helper/auth';
 
-const ListArticles = () => {
+const ListArticles = ({ translate } : {
+    translate: any
+}) => {
     const { isPending, isError, error, data, isFetching }: any = useQuery({
         queryKey: ['articles'],
         queryFn: async () => {
@@ -32,6 +34,7 @@ const ListArticles = () => {
         }
     })
 
+
     const removeRow = (id: string) => {
         const url = `${API_URL.ARTICLE}/${id}`
         mutation.mutate({ url })
@@ -46,8 +49,8 @@ const ListArticles = () => {
     if (isError) return 'An error has occurred: ' + error.message
 
     return (
-        <div className="my-10">            
-            <DataTable columns={columns} data={data} searchKey='title' meta={{removeRow}}/>
+        <div className="my-10">      
+            <DataTable columns={columns} data={data} searchKey='title' meta={{removeRow}} {...translate}/>
         </div>
     )
 }
