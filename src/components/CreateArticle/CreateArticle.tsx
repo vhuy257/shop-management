@@ -52,8 +52,6 @@ const CreateArticle = ({ title }: any) => {
         }
 
         if(createArticle.isError) {
-            console.log(createArticle, 'createArticle.error')
-
             toast({
                 description: createArticle.error.message,
                 variant: 'destructive'

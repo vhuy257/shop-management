@@ -1,4 +1,5 @@
 import ListArticles from "@/components/ListArticles/ListArticles";
+import ListItems from "@/components/ListItems/ListItems";
 import { useTranslations } from "next-intl";
 
 export default function Home({params: { locale }}: any) {
@@ -10,7 +11,8 @@ export default function Home({params: { locale }}: any) {
 
   return (
     <>
-      <ListArticles translate={listTranslate}/>
+      {/* <ListArticles translate={listTranslate}/> */}
+      <ListItems translate={listTranslate}/>
     </>
   )
 }

@@ -15,7 +15,6 @@ import {
 import { DataTablePagination } from "./data-table-pagination";
 import { DataTableToolbar } from "./data-table-toolbar";
 import useDataTable from "@/hooks/useDataTable";
-import CreateArticle from "../CreateArticle/CreateArticle";
 import DeleteArticles from "../DeleteArticles/DeleteArticles";
 import { useTranslations } from "next-intl";
 
@@ -38,13 +37,10 @@ export function DataTable<TData, TValue>({
   const { title }: any = translate;
 
   return (
-    <div className="w-full">
-      <div className="flex justify-center gap-4 mb-5">
-          <CreateArticle />        
-          <DeleteArticles table={table}/>    
-      </div>
-      <div className="flex items-center py-4">
+    <div className="w-full">      
+      <div className="flex items-center py-4 gap-2">
         <DataTableToolbar table={table} searchKey={searchKey}/>
+        <DeleteArticles table={table}/>
       </div>
       <div className="rounded-md border">
         <Table>

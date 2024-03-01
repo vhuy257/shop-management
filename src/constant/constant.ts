@@ -4,5 +4,6 @@ export const API_URL = {
     BASE_URL: "http://localhost:3000/",
     USER: "users",
     AUTH_LOGIN: "auth/login",
-    ARTICLE: "articles"
+    ARTICLE: "articles",
+    ITEMS: "items",
 }
