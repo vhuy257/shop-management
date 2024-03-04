@@ -4,15 +4,13 @@ import React from "react";
 import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -52,13 +50,13 @@ const components: { title: string; href: string; description: string }[] = [
   },
 ];
 
-const Navigation = () => {
+const Navigation = ({ translate }: any) => {
   const locale = useLocale()
-
+  
   return (
     <NavigationMenu>
       <NavigationMenuList>
-        <NavigationMenuItem>
+        {/* <NavigationMenuItem>
           <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
@@ -89,8 +87,8 @@ const Navigation = () => {
               </ListItem>
             </ul>
           </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
+        </NavigationMenuItem> */}
+        {/* <NavigationMenuItem>
           <NavigationMenuTrigger>Components</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
@@ -105,11 +103,25 @@ const Navigation = () => {
               ))}
             </ul>
           </NavigationMenuContent>
+        </NavigationMenuItem> */}
+        <NavigationMenuItem>
+          <Link href={`/${locale}/employees`} legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              {translate.employees}
+            </NavigationMenuLink>
+          </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href={`/${locale}/menu-list`} legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Menu List
+            {translate.menu_list}
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link href={`/${locale}/orders`} legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            {translate.order}
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

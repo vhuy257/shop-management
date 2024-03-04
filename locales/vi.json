@@ -1,5 +1,10 @@
 {
     "Index": {
       "title": "Xin chào!"
+    },
+    "navigation": {
+      "employees": "Nhân viên",
+      "menu_list": "Danh sách món",
+      "order": "Đặt Hàng"
     }
 }

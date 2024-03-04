@@ -1,5 +1,10 @@
 {
     "Index": {
       "title": "Hello world!"
+    },
+    "navigation": {
+      "employees": "Employees",
+      "menu_list": "Menu List",
+      "order": "Order"
     }
 }

@@ -10,9 +10,16 @@ import Link from 'next/link'
 const Header = async () => {
   const session = await getServerSession(authOptions)
   const t = await getTranslations("Index")
+  const nav = await getTranslations("navigation")
 
-  const translate = {
+  const userTrans = {
     title: t("title")
+  }
+
+  const translateNav = {
+    employees: nav("employees"),
+    menu_list: nav("menu_list"),
+    order: nav("order")
   }
 
   return (
@@ -29,9 +36,9 @@ const Header = async () => {
             />
           </Link>
         </div>
-        <Navigation />
+        <Navigation translate={translateNav} />
         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          {session && <UserDropdown  session={session} {...translate} />}
+          {session && <UserDropdown  session={session} {...userTrans}/>}
         </div>
     </div>
   )
